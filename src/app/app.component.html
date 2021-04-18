@@ -1,0 +1,45 @@
+<header>
+    <div class="container container-bg">
+            <div class="title">
+   
+    <h1>Git Hub User Details</h1>
+        
+    <p class="subtitle">App For Searching Github Users</p>
+    </div>
+   
+        <nav>
+            <ul>
+                <li><a class="current" href="#">HOME</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About Us</a></li>
+            
+            </ul>
+        </nav> 
+    </div>
+    </header> 
+    <div class="container container-bg">
+        <div style="width: 87%;" class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="query">
+            <div class="input-group-append">
+              <button *ngIf="!userArray.length" class="btn btn-success" type="submit" (click)="fetchUsers()">Go</button>
+              <button *ngIf="userArray.length" class="btn btn-danger" type="submit" (click)="userArray=[]">Cancel</button>
+            </div>
+          </div>
+          <div class="container-bg"*ngIf="userArray.length">
+              <div style="margin-right: 1em;">score</div>
+            <i class="fa fa-angle-double-down" style="font-size: 2em;" (click)="ascending()" aria-hidden="true"></i>
+            <i class="fa fa-angle-double-up" style="font-size: 2em;" (click)="descending()" aria-hidden="true"></i>
+          </div>
+          
+    </div>
+    
+    <div class="container-users">
+        <div *ngFor="let user of userArray" class="card card-user" >
+  <img class="card-img-top" src={{user.avatar_url}} alt={{user.avatar_url}}>
+  <div class="card-body">
+    <h4 class="card-title">{{user.login}}</h4>
+    <p class="card-text">score:{{user.score}}</p>
+    <a  class="btn btn-primary"(click)="openDialog(user.login)">See Profile</a>
+  </div>
+</div>
+        </div>
