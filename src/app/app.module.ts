@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule }    from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
+import {SafePipe} from './pipes/SafePipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileDialogComponent
+    ProfileDialogComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

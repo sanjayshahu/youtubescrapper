@@ -10,11 +10,11 @@ import { map } from 'rxjs/operators';
 })
 export class DataService{
     constructor(private http: HttpClient){}
-    firstApi= "https://api.github.com/search/users?q=";
+    firstApi= "http://localhost:3001/videos";
     secondApi="https://api.github.com/users/";
 
-    fetchUsers(userName){
-        let url=this.firstApi+userName;
+    fetchUsers(video){
+        let url=this.firstApi;
         return this.http.get(url).pipe(map((response: any) => response));
 
     }

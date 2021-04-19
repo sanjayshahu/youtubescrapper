@@ -13,17 +13,20 @@ export class ProfileDialogComponent implements OnInit {
 
   dialogData:any;
   dataDisplayed:any;
+  urlData="";
   constructor(  private dialogRef: MatDialogRef<ProfileDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data,public dataService:DataService) { 
-      this.dialogData=data.userName;
+      this.dialogData=data;
     }
 
   ngOnInit(): void {
     console.log(this.dialogData);
-    this.dataService.fetchUser(this.dialogData).subscribe((res)=>{
-      console.log(res);
-      this.dataDisplayed=res;
-    });
+    this.dataDisplayed=this.dialogData.userName;
+    this.urlData=`https://www.youtube.com/embed/${this.dialogData.userName.id_details}`;
+    // this.dataService.fetchUser(this.dialogData).subscribe((res)=>{
+    //   console.log(res);
+    //   this.dataDisplayed=res;
+    // });
   }
   save() {
     this.dialogRef.close();

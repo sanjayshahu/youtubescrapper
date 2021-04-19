@@ -18,11 +18,15 @@ export class AppComponent {
 
 fetchUsers(){
   console.log(this.query);
+  this.userArray=[];
   this.dataService.fetchUsers(this.query).subscribe((res)=>{
     console.log(res);
-    this.userArray=res["items"];
+    this.userArray=res;
   });
 
+}
+clearUsers(){
+  this.userArray=[];
 }
 openDialog(user) {
  
@@ -41,8 +45,8 @@ openDialog(user) {
   data: {
     userName:user
   },
-  width: '600px',
-  height: '320px'});
+  width: '1400px',
+  height: '500px'});
   
   dialogRef.afterClosed().subscribe(
     data => console.log("Dialog output:", data)
